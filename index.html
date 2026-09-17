@@ -2460,8 +2460,8 @@
                 <div class="path-n">ПУТЬ D · ~20 МИН</div>
                 <div class="path-h">Работаю в Cursor / Claude Code</div>
                 <div class="path-d">
-                  Coding agents → Rules, Skills, Commands, Hooks — с реальными
-                  примерами файлов.
+                  Cursor vs Claude Code → установка на Mac / VS Code → Rules,
+                  Skills, Hooks с примерами файлов.
                 </div>
               </a>
               <a class="path" href="#practice">
@@ -4240,29 +4240,278 @@
         <section class="section" id="cursor">
           <header>
             <div class="sec-num">12</div>
-            <h2>AI Coding Agents</h2>
+            <h2>Cursor vs Claude Code</h2>
             <p class="sec-lead">
-              Cursor — это AI coding environment: редактор с агентами внутри.
-              Модель арендуется; оркестрация — context, rules, tools, MCP — и
-              есть продукт. То же с Claude Code и собратьями.
+              Оба — <b>coding agents</b> (приложения с циклом + tools), а не
+              модели. Cursor — IDE на базе VS Code. Claude Code — агент
+              Anthropic в терминале (и панели в VS Code / форках). Модель Claude
+              можно вызывать и там, и там — но продукты разные.
             </p>
           </header>
+          <div class="plain">
+            <b>На человеческом языке:</b> Cursor ≈ «VS Code с встроенным
+            AI-агентом и Tab-автодополнением». Claude Code ≈ «сильный агент в
+            терминале, который живёт в репозитории». Многие используют оба:
+            Cursor для правок глазами, Claude Code — для длинных автономных
+            задач в shell.
+          </div>
           <div class="dont">
-            <div class="dont-t">DON'T CONFUSE</div>
+            <div class="dont-t">НЕ ПУТАЙТЕ</div>
             <div class="pair">
-              <b>Cursor</b><span class="neq">≠</span>Model — это приложение,
-              которое оркестрирует модели.
+              <b>Cursor</b><span class="neq">≠</span>Model — редактор/агент,
+              модели подключаются внутри.
             </div>
             <div class="pair">
               <b>Claude</b><span class="neq">≠</span>Claude Code — модель ≠
-              построенный на ней кодинг-продукт.
+              CLI/агент-продукт Anthropic.
+            </div>
+            <div class="pair">
+              <b>VS Code</b><span class="neq">≠</span>Cursor — Cursor форк VS
+              Code; обычный VS Code сам по себе — другой продукт.
             </div>
           </div>
+
+          <h3>Сравнение одним взглядом</h3>
+          <div class="twrap">
+            <table aria-label="Cursor против Claude Code">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Cursor</th>
+                  <th>Claude Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Что это</td>
+                  <td>AI IDE (форк VS Code)</td>
+                  <td>Терминальный coding agent (+ UI в VS Code)</td>
+                </tr>
+                <tr>
+                  <td>Кто делает</td>
+                  <td>Cursor (Anysphere)</td>
+                  <td>Anthropic</td>
+                </tr>
+                <tr>
+                  <td>Где живёт</td>
+                  <td>Своё приложение-редактор</td>
+                  <td>Terminal / iTerm / Warp + опционально VS Code</td>
+                </tr>
+                <tr>
+                  <td>Модели</td>
+                  <td>Несколько: Claude, GPT, Gemini…</td>
+                  <td>В первую очередь Claude (Anthropic)</td>
+                </tr>
+                <tr>
+                  <td>Inline Tab / completions</td>
+                  <td>Сильная сторона</td>
+                  <td>Нет (это не IDE)</td>
+                </tr>
+                <tr>
+                  <td>Автономные многофайловые задачи</td>
+                  <td>Agent / Composer в IDE</td>
+                  <td>Очень сильный agent-loop в репо</td>
+                </tr>
+                <tr>
+                  <td>Правила проекта</td>
+                  <td><span class="mono-inline">.cursor/rules/</span>, skills,
+                    commands, hooks</td>
+                  <td><span class="mono-inline">CLAUDE.md</span>,
+                    <span class="mono-inline">.claude/</span></td>
+                </tr>
+                <tr>
+                  <td>Кому проще старт</td>
+                  <td>Если вы из VS Code</td>
+                  <td>Если вы любите терминал и shell</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Как пользоваться на Mac</h3>
+          <div class="grid-2">
+            <div class="card">
+              <p class="card-t">CURSOR · MAC</p>
+              <ol style="margin: 0; padding-left: 1.2em; color: var(--text-secondary); font-size: 14px; max-width: 70ch">
+                <li style="margin-bottom: 8px">
+                  Скачайте с
+                  <a href="https://cursor.com" target="_blank" rel="noopener"
+                    >cursor.com</a
+                  >
+                  или:
+                  <span class="mono-inline">brew install --cask cursor</span>
+                </li>
+                <li style="margin-bottom: 8px">
+                  При первом запуске можно импортировать расширения, тему и
+                  keybindings из VS Code.
+                </li>
+                <li style="margin-bottom: 8px">
+                  Откройте папку проекта → чат / Agent (часто
+                  <span class="mono-inline">⌘I</span> /
+                  <span class="mono-inline">⌘L</span> — смотрите Shortcuts в
+                  Settings).
+                </li>
+                <li>
+                  Выберите модель в селекторе чата. Для агента нужны права на
+                  файлы/терминал — подтверждайте tool calls осознанно.
+                </li>
+              </ol>
+            </div>
+            <div class="card">
+              <p class="card-t">CLAUDE CODE · MAC</p>
+              <ol style="margin: 0; padding-left: 1.2em; color: var(--text-secondary); font-size: 14px; max-width: 70ch">
+                <li style="margin-bottom: 8px">
+                  Нужен аккаунт Claude (Pro/Max/Team) или API key. Официальный
+                  setup:
+                  <a
+                    href="https://docs.claude.com/en/docs/claude-code/setup"
+                    target="_blank"
+                    rel="noopener"
+                    >docs.claude.com → Claude Code</a
+                  >.
+                </li>
+                <li style="margin-bottom: 8px">
+                  Установка, например:
+                  <span class="mono-inline">brew install --cask claude-code</span>
+                  или native installer из документации Anthropic.
+                </li>
+                <li style="margin-bottom: 8px">
+                  В корне проекта:
+                  <span class="mono-inline">cd my-app && claude</span> → логин
+                  → дайте задачу на естественном языке.
+                </li>
+                <li>
+                  Если задан
+                  <span class="mono-inline">ANTHROPIC_API_KEY</span>, CLI может
+                  биллить по API, а не по подписке — проверьте env, если «съедает»
+                  деньги неожиданно.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <h3>А как с VS Code?</h3>
+          <div class="compare-plain">
+            <div class="card">
+              <p class="card-t">ОСТАТЬСЯ В VS CODE</p>
+              <p>
+                Поставьте расширение <b>Claude Code</b> из Marketplace (VS Code
+                1.94+). Получите панель агента, diffs, @-файлы. Для полного CLI
+                всё равно поставьте standalone
+                <span class="mono-inline">claude</span> — расширение само по
+                себе не всегда добавляет его в PATH.
+              </p>
+            </div>
+            <div class="card">
+              <p class="card-t">ПЕРЕСЕСТЬ НА CURSOR</p>
+              <p>
+                Cursor — отдельное приложение-форк: почти тот же UX, что VS
+                Code, плюс свои Agent / Tab / Rules. Расширения VS Code часто
+                переносятся. Claude Code при желании можно держать во встроенном
+                терминале Cursor параллельно.
+              </p>
+            </div>
+          </div>
+          <div class="mistake">
+            <div class="learn-tag learn-tag--warn">ЧАСТАЯ ОШИБКА</div>
+            <p>
+              Ставить «Claude» в голову как редактор. Claude — модель (и чат
+              claude.ai). <b>Claude Code</b> — агент для репозитория.
+              <b>Cursor</b> — IDE, внутри которой может крутиться и Claude, и
+              другие модели.
+            </p>
+          </div>
+
+          <h3>Особенности настройки</h3>
+          <div class="grid-2">
+            <div class="card">
+              <p class="card-t">CURSOR · ЧТО НАСТРОИТЬ</p>
+              <ul style="margin: 0; padding-left: 1.2em; color: var(--text-secondary); font-size: 14px">
+                <li style="margin-bottom: 6px">
+                  <span class="mono-inline">.cursor/rules/*.mdc</span> —
+                  постоянные правила проекта
+                </li>
+                <li style="margin-bottom: 6px">
+                  Skills / Commands / Hooks — см.
+                  <a href="#extensions">раздел Extensions</a>
+                </li>
+                <li style="margin-bottom: 6px">
+                  MCP servers — Settings → MCP (GitHub, БД, браузер…)
+                </li>
+                <li style="margin-bottom: 6px">
+                  Privacy / Indexing — что индексировать из репо
+                </li>
+                <li>
+                  Модель по умолчанию + лимиты агента (авто-run tools осторожно
+                  на проде)
+                </li>
+              </ul>
+            </div>
+            <div class="card">
+              <p class="card-t">CLAUDE CODE · ЧТО НАСТРОИТЬ</p>
+              <ul style="margin: 0; padding-left: 1.2em; color: var(--text-secondary); font-size: 14px">
+                <li style="margin-bottom: 6px">
+                  <span class="mono-inline">CLAUDE.md</span> в корне — «как мы
+                  работаем в этом репо»
+                </li>
+                <li style="margin-bottom: 6px">
+                  <span class="mono-inline">.claude/</span> — локальные
+                  настройки, permissions, иногда skills/команды
+                </li>
+                <li style="margin-bottom: 6px">
+                  MCP — через конфиг Claude Code (тот же протокол, другой файл
+                  настроек, чем у Cursor)
+                </li>
+                <li style="margin-bottom: 6px">
+                  Permissions: что агенту можно запускать без спроса
+                </li>
+                <li>
+                  VS Code extension + CLI делят одни
+                  <span class="mono-inline">CLAUDE.md</span> / сессии — удобно
+                  не дублировать правила
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="code">
+            <div class="code-head">
+              <span class="code-lang">ПРИМЕР · CLAUDE.md (фрагмент)</span
+              ><button class="code-copy" type="button">COPY</button>
+            </div>
+            <pre><code><span class="c-c"># Project</span>
+- Stack: TypeScript, strict
+- Domain layer must stay pure (no React, no fetch)
+- Before finishing: run the project check script
+
+<span class="c-c"># Don't</span>
+- Don't commit secrets
+- Don't rewrite unrelated files</code></pre>
+          </div>
+          <div class="code">
+            <div class="code-head">
+              <span class="code-lang">ПРИМЕР · .cursor/rules/project.mdc</span
+              ><button class="code-copy" type="button">COPY</button>
+            </div>
+            <pre><code><span class="c-c">---</span>
+<span class="c-v">description</span>: Project conventions
+<span class="c-v">alwaysApply</span>: <span class="c-k">true</span>
+<span class="c-c">---</span>
+- TypeScript strict
+- Domain stays pure — no React in domain
+- Prefer small diffs; ask before large refactors</code></pre>
+          </div>
+          <p class="note">
+            Идея одна (постоянные инструкции), файлы разные. Если команда
+            пользуется и Cursor, и Claude Code — держите смысл правил
+            синхронным (как в agent-base), даже если форматы отличаются.
+          </p>
+
           <div class="card">
             <div class="flow">
               <div class="fnode">DEVELOPER</div>
               <div class="arr"></div>
-              <div class="fnode fnode--accent">CURSOR</div>
+              <div class="fnode fnode--accent">CURSOR / CLAUDE CODE</div>
               <div class="arr"></div>
               <div class="fnode fnode--violet">AGENT</div>
             </div>
@@ -4275,7 +4524,8 @@
               ><span class="chip chip--tool">Subagents</span>
             </div>
           </div>
-          <h3>The Cursor ecosystem</h3>
+
+          <h3>Экосистема Cursor (подробнее)</h3>
           <ul
             class="tree"
             role="img"
@@ -4347,12 +4597,49 @@
               </ul>
             </li>
           </ul>
+
+          <div class="learn quiz" data-quiz="cursor-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Вы живёте в VS Code и хотите минимум смены привычек + Tab
+              completions. Что логичнее первым?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="1">
+                Cursor (или Claude Code extension в VS Code, если остаётесь)
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только установить модель Claude без агента
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                MCP без IDE и без CLI
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <details class="drill">
+            <summary>
+              <span>Шпаргалка:</span> когда что выбрать
+            </summary>
+            <div class="drill-body">
+              <p>
+                <b>Cursor</b> — день за днём в редакторе, Tab, визуальные
+                diffs, несколько моделей.<br />
+                <b>Claude Code CLI</b> — длинные агентные прогоны в репо,
+                скрипты, remote/SSH, «сделай весь фикс сам».<br />
+                <b>Оба</b> — нормальный сетап; не правьте один файл двумя
+                агентами одновременно без синхронизации.
+              </p>
+            </div>
+          </details>
+
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
               <a href="#agents">→ Agents</a
               ><a href="#extensions">→ Rules / Skills / Hooks</a
-              ><a href="#mcp">→ MCP</a>
+              ><a href="#mcp">→ MCP</a
+              ><a href="#practice">→ Практика</a>
             </div>
           </div>
         </section>
@@ -5559,7 +5846,7 @@ Do <span class="c-k">not</span> invent Next-only or Vite-only steps the repo doe
           { id: "mcp", label: "MCP", num: "09" },
           { id: "rag", label: "RAG", num: "10" },
           { id: "memory", label: "Memory", num: "11" },
-          { id: "cursor", label: "Cursor", num: "12" },
+          { id: "cursor", label: "Cursor / Claude", num: "12" },
           { id: "extensions", label: "AI Extensions", num: "13" },
           { id: "providers", label: "Providers", num: "14" },
           { id: "evals", label: "Evals", num: "15" },
@@ -5826,14 +6113,23 @@ Do <span class="c-k">not</span> invent Next-only or Vite-only steps the repo doe
           },
           {
             id: "cursor",
-            title: "AI Coding Agents",
-            desc: "Cursor, AI IDE и экосистема агентов",
+            title: "Cursor vs Claude Code",
+            desc: "Чем отличаются, Mac/VS Code, настройки правил",
             kw: [
               "cursor",
+              "claude code",
+              "vs code",
+              "vscode",
+              "mac",
+              "установка",
+              "настройка",
+              "ide",
+              "терминал",
+              "brew",
+              "claude.md",
               "ai ide",
               "кодинг",
               "агент",
-              "claude code",
               "экосистема",
               "coding agent",
               "ecosystem",
@@ -6176,6 +6472,26 @@ Do <span class="c-k">not</span> invent Next-only or Vite-only steps the repo doe
             r: [
               ["Agent", "#g-agent"],
               ["Tools", "#tools"],
+            ],
+          },
+          {
+            t: "Cursor",
+            c: "AI Coding",
+            d: "AI IDE (форк VS Code): редактор + Tab completions + Agent. Модели подключаются внутри (Claude, GPT, Gemini…). Не путать с самой моделью. На Mac: cursor.com или brew install --cask cursor.",
+            r: [
+              ["Claude Code", "#g-claude-code"],
+              ["Rule", "#g-rule"],
+              ["Agents", "#agents"],
+            ],
+          },
+          {
+            t: "Claude Code",
+            c: "AI Coding",
+            d: "Coding agent от Anthropic: в первую очередь CLI в терминале, плюс расширение для VS Code. Правила — CLAUDE.md / .claude/. Не путать с моделью Claude и с чатом claude.ai.",
+            r: [
+              ["Cursor", "#g-cursor"],
+              ["Claude", "#models"],
+              ["Agents", "#agents"],
             ],
           },
           {
@@ -7385,6 +7701,10 @@ Do <span class="c-k">not</span> invent Next-only or Vite-only steps the repo doe
           "mcp-1": {
             ok: "MCP — протокол интеграций, не модель и не поиск по документам.",
             bad: "MCP ≠ модель и ≠ RAG. Это стандарт, как подключать tools и данные.",
+          },
+          "cursor-1": {
+            ok: "Из VS Code логичный первый шаг — Cursor или Claude Code extension, чтобы сохранить привычный редактор.",
+            bad: "Одна «модель Claude» без IDE/агента не даст Tab и агентный цикл. Нужен продукт: Cursor или Claude Code.",
           },
           "overview-1": {
             ok: "Верно. Перевод — один запрос → один ответ. Агент здесь лишний.",

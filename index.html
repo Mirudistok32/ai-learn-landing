@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Engineering Map — Models, Agents, MCP, RAG & AI Tools</title>
+    <title>AI Engineering Map — понятный гид по моделям, агентам, MCP и RAG</title>
     <meta
       name="description"
-      content="Визуальный гид по современному AI-стеку: модели, API, агенты, инструменты, MCP, RAG, память, эвалы и системы AI-кодинга."
+      content="Учебная карта AI-стека: модель vs агент, как обучают LLM, компании и страны, prompt engineering, rules/skills/hooks с примерами кода. Обновлено сентябрь 2026."
     />
     <meta property="og:title" content="AI Engineering Map" />
     <meta
       property="og:description"
-      content="Визуальная карта современного AI-стека: модели, API, агенты, инструменты, MCP, RAG, память, эвалы."
+      content="От новичка до агентов: простые объяснения, примеры и код. Models, agents, MCP, RAG, Cursor."
     />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0a0e14" />
@@ -471,6 +471,349 @@
       }
       .edot.is-on {
         fill: var(--accent);
+      }
+      /* ============ LEARNING PATH / CLARITY ============ */
+      .howto {
+        margin: 28px 0 8px;
+        padding: 22px 22px 18px;
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        border-radius: 14px;
+      }
+      .howto-t {
+        font: 700 11px var(--mono);
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        margin: 0 0 8px;
+      }
+      .howto h2 {
+        margin: 0 0 10px;
+        font-size: clamp(20px, 2.8vw, 26px);
+      }
+      .howto-lead {
+        color: var(--text-secondary);
+        margin: 0 0 18px;
+        max-width: 68ch;
+      }
+      .path-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+        gap: 12px;
+      }
+      .path {
+        display: block;
+        padding: 14px 14px 12px;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: inherit;
+        text-decoration: none;
+        transition:
+          border-color 0.18s,
+          background 0.18s;
+      }
+      .path:hover {
+        border-color: rgba(56, 217, 192, 0.45);
+        background: var(--accent-soft);
+        text-decoration: none;
+      }
+      .path-n {
+        font: 700 10px var(--mono);
+        letter-spacing: 0.16em;
+        color: var(--accent);
+        margin-bottom: 6px;
+      }
+      .path-h {
+        font: 700 14px/1.3 var(--sans);
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .path-d {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.45;
+      }
+      .plain {
+        background: var(--surface);
+        border-left: 3px solid var(--accent);
+        padding: 14px 16px;
+        margin: 16px 0 22px;
+        border-radius: 0 10px 10px 0;
+        color: var(--text-secondary);
+        max-width: 72ch;
+      }
+      .plain b {
+        color: var(--text-primary);
+      }
+      .ex-label {
+        font: 700 10px var(--mono);
+        letter-spacing: 0.14em;
+        color: var(--text-muted);
+        margin: 18px 0 8px;
+      }
+      .timeline {
+        position: relative;
+        margin: 18px 0 8px;
+        padding-left: 18px;
+        border-left: 2px solid var(--border-strong);
+      }
+      .tl-item {
+        position: relative;
+        padding: 0 0 20px 14px;
+      }
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -23px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-soft);
+      }
+      .tl-y {
+        font: 700 11px var(--mono);
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+      .tl-h {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      .tl-d {
+        font-size: 14px;
+        color: var(--text-secondary);
+        max-width: 68ch;
+      }
+      .flag {
+        display: inline-block;
+        font: 600 10px var(--mono);
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        border: 1px solid var(--border-strong);
+        border-radius: 6px;
+        padding: 2px 7px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .compare-plain {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        gap: 14px;
+        margin: 16px 0 22px;
+      }
+      .compare-plain .card p:last-child {
+        margin-bottom: 0;
+      }
+      .side-group {
+        font: 700 9px var(--mono);
+        letter-spacing: 0.18em;
+        color: var(--text-muted);
+        margin: 14px 0 6px;
+        padding-left: 2px;
+      }
+      .side-group:first-child {
+        margin-top: 0;
+      }
+      .nav-chapters {
+        display: none;
+      }
+      @media (min-width: 1080px) {
+        .nav-chapters {
+          display: block;
+        }
+      }
+      /* ============ LEARN / QUIZ ============ */
+      .learn {
+        margin: 22px 0;
+        padding: 18px 18px 16px;
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        border-radius: 12px;
+      }
+      .learn-tag {
+        font: 700 10px var(--mono);
+        letter-spacing: 0.16em;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .learn-tag--warn {
+        color: var(--warning);
+      }
+      .quiz-q {
+        margin: 0 0 14px;
+        color: var(--text-primary);
+        font-weight: 600;
+        max-width: 68ch;
+      }
+      .quiz-opts {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .quiz-opt {
+        text-align: left;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text-secondary);
+        padding: 11px 14px;
+        font: 500 14px/1.45 var(--sans);
+        cursor: pointer;
+        transition:
+          border-color 0.15s,
+          background 0.15s,
+          color 0.15s;
+      }
+      .quiz-opt:hover:not(:disabled) {
+        border-color: rgba(56, 217, 192, 0.4);
+        color: var(--text-primary);
+      }
+      .quiz-opt:disabled {
+        cursor: default;
+      }
+      .quiz-opt.is-correct {
+        border-color: rgba(74, 222, 128, 0.55);
+        background: rgba(74, 222, 128, 0.1);
+        color: var(--text-primary);
+      }
+      .quiz-opt.is-wrong {
+        border-color: rgba(248, 113, 113, 0.45);
+        background: rgba(248, 113, 113, 0.08);
+        opacity: 0.85;
+      }
+      .quiz-opt.is-muted {
+        opacity: 0.45;
+      }
+      .quiz-fb {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        max-width: 68ch;
+      }
+      .quiz-fb[hidden] {
+        display: none;
+      }
+      .quiz-fb.is-ok {
+        background: rgba(74, 222, 128, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.35);
+      }
+      .quiz-fb.is-bad {
+        background: rgba(248, 113, 113, 0.08);
+        border: 1px solid rgba(248, 113, 113, 0.3);
+      }
+      .quiz-fb b {
+        color: var(--text-primary);
+      }
+      .drill {
+        margin: 18px 0;
+        border: 1px solid var(--border-strong);
+        border-radius: 12px;
+        background: var(--surface);
+        overflow: hidden;
+      }
+      .drill > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font: 600 14px var(--sans);
+        color: var(--text-primary);
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+      }
+      .drill > summary::-webkit-details-marker {
+        display: none;
+      }
+      .drill > summary::before {
+        content: "▸";
+        color: var(--accent);
+        font-family: var(--mono);
+        flex: none;
+      }
+      .drill[open] > summary::before {
+        content: "▾";
+      }
+      .drill-body {
+        padding: 0 16px 16px;
+        border-top: 1px solid var(--border);
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+      .drill-body p {
+        margin: 12px 0 0;
+      }
+      .mistake {
+        margin: 18px 0;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(251, 191, 36, 0.35);
+        background: rgba(251, 191, 36, 0.06);
+      }
+      .mistake .learn-tag {
+        color: var(--warning);
+      }
+      .mistake p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 14px;
+        max-width: 68ch;
+      }
+      .score-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        align-items: center;
+        margin: 0 0 18px;
+        padding: 12px 14px;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font: 600 12px var(--mono);
+        letter-spacing: 0.06em;
+        color: var(--text-secondary);
+      }
+      .score-bar b {
+        color: var(--accent);
+      }
+      .scenario-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: 12px;
+        margin: 14px 0;
+      }
+      .scenario {
+        text-align: left;
+        padding: 14px;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+      }
+      .scenario:hover {
+        border-color: rgba(56, 217, 192, 0.45);
+      }
+      .scenario.is-picked {
+        border-color: rgba(56, 217, 192, 0.55);
+        background: var(--accent-soft);
+      }
+      .scenario-t {
+        font: 700 13px var(--sans);
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .scenario-d {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.4;
       }
       /* ============ SECTIONS ============ */
       .section {
@@ -1870,7 +2213,9 @@
           >AI ENGINEERING <b>MAP</b></a
         >
         <nav class="hdr-nav" aria-label="Быстрые ссылки">
-          <a href="#overview">EXPLORE</a>
+          <a href="#howto">КАК УЧИТЬСЯ</a>
+          <a href="#practice">ПРАКТИКА</a>
+          <a href="#glossary">ГЛОССАРИЙ</a>
         </nav>
         <button
           class="search-btn"
@@ -1905,7 +2250,7 @@
         <div class="side-foot">
           <div class="side-foot-t">AI STACK</div>
           <div class="stack-cells" id="stackCells" aria-hidden="true"></div>
-          <div class="side-count" id="secCounter">— / 17</div>
+          <div class="side-count" id="secCounter">— / 19</div>
         </div>
       </aside>
       <div class="backdrop" id="backdrop" aria-hidden="true"></div>
@@ -1913,22 +2258,24 @@
       <main class="content">
         <!-- ================= HERO ================= -->
         <section class="hero" id="hero">
-          <p class="eyebrow">// AN INTERACTIVE MAP OF THE MODERN AI STACK</p>
+          <p class="eyebrow">// УЧЕБНАЯ КАРТА AI-СТЕКА · ОБНОВЛЕНО СЕНТЯБРЬ 2026</p>
           <h1>AI Engineering<br />Map</h1>
           <p class="hero-sub">
-            Визуальная карта models, API, agents, tools, MCP, RAG и всего
-            современного AI-стека.
+            Разберёмся, <b>что такое модель</b>, чем она отличается от
+            <b>агента</b>, как устроены prompt, tools, MCP, RAG — и как это
+            собрать в рабочее приложение.
           </p>
           <p class="hero-note">
-            Понять, как всё это соединяется — от одного запроса к LLM до
-            автономных AI-агентов.
+            Не справочник жаргона: у каждого термина — простое объяснение,
+            пример «до/после» и кусок кода, где это уместно. Читайте сверху вниз
+            или выберите путь ниже.
           </p>
           <div class="hero-cta">
-            <a class="btn" href="#overview">EXPLORE THE MAP →</a>
-            <a class="btn btn--ghost" href="#architecture">VIEW ARCHITECTURE</a>
+            <a class="btn" href="#howto">С ЧЕГО НАЧАТЬ →</a>
+            <a class="btn btn--ghost" href="#models">МОДЕЛИ И КОМПАНИИ</a>
           </div>
           <div class="hero-meta">
-            17 SECTIONS · 25 TERMS · ≈ 30 MIN · NO BACKEND
+            5 УЧЕБНЫХ ПУТЕЙ · КВИЗЫ · ТРЕНАЖЁР ПРОМПТА · БЕЗ БЭКЕНДА
           </div>
           <div class="hero-vis">
             <svg
@@ -2052,36 +2399,121 @@
               </g>
             </svg>
             <div class="hero-def" aria-live="polite">
-              <div class="hero-def-t" id="heroDefT">HOVER OR TAP A NODE</div>
+              <div class="hero-def-t" id="heroDefT">НАЖМИТЕ НА УЗЕЛ</div>
               <div class="hero-def-d" id="heroDefD">
-                Каждая часть стека связана через ваше приложение. Наведите на
-                узел, чтобы увидеть, что он делает.
+                Это сердце карты: ваше приложение связывает модель, инструменты,
+                память и данные. Нажмите узел — появится короткое объяснение
+                своими словами.
               </div>
             </div>
           </div>
           <a
             class="hero-scroll"
-            href="#overview"
-            aria-label="Прокрутить к первому разделу"
+            href="#howto"
+            aria-label="Прокрутить к руководству"
             >↓</a
           >
+        </section>
+
+        <!-- ================= HOW TO LEARN ================= -->
+        <section class="section" id="howto">
+          <header>
+            <div class="sec-num">00</div>
+            <h2>Как пользоваться этой картой</h2>
+            <p class="sec-lead">
+              Если открыли страницу и «ничего не понятно» — нормально. AI-стек
+              полон похожих слов. Здесь порядок такой: сначала картина целиком,
+              потом термины с примерами, потом практика в Cursor.
+            </p>
+          </header>
+          <div class="howto">
+            <p class="howto-t">ВЫБЕРИТЕ ПУТЬ</p>
+            <p class="howto-lead">
+              Не обязательно читать все разделы подряд. Выберите маршрут под
+              вашу задачу — каждый ведёт к нужным секциям с объяснениями и
+              кодом.
+            </p>
+            <div class="path-grid">
+              <a class="path" href="#overview">
+                <div class="path-n">ПУТЬ A · ~15 МИН</div>
+                <div class="path-h">Я новичок в AI</div>
+                <div class="path-d">
+                  Обзор → Модель vs Агент → Промпт → Токены. Поймёте язык стека.
+                </div>
+              </a>
+              <a class="path" href="#agents">
+                <div class="path-n">ПУТЬ B · ~20 МИН</div>
+                <div class="path-h">Хочу понять агентов</div>
+                <div class="path-d">
+                  Tools → Tool calling → Agents → MCP. Увидите цикл «подумал →
+                  вызвал tool → ответил».
+                </div>
+              </a>
+              <a class="path" href="#rag">
+                <div class="path-n">ПУТЬ C · ~15 МИН</div>
+                <div class="path-h">Нужны ответы по своим данным</div>
+                <div class="path-d">
+                  RAG → Embeddings → Memory. Живое демо поиска по базе знаний.
+                </div>
+              </a>
+              <a class="path" href="#cursor">
+                <div class="path-n">ПУТЬ D · ~20 МИН</div>
+                <div class="path-h">Работаю в Cursor / Claude Code</div>
+                <div class="path-d">
+                  Coding agents → Rules, Skills, Commands, Hooks — с реальными
+                  примерами файлов.
+                </div>
+              </a>
+              <a class="path" href="#practice">
+                <div class="path-n">ПУТЬ E · ~15 МИН</div>
+                <div class="path-h">Хочу проверить себя</div>
+                <div class="path-d">
+                  Квизы, сценарии «что выбрать», разбор ошибок — закрепление без
+                  зубрёжки.
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="plain">
+            <b>Правило чтения:</b> если термин кажется «пустым» — откройте
+            блок <i>на человеческом языке</i> под заголовком или прыгните в
+            <a href="#glossary">глоссарий</a>. По ходу карты будут блоки
+            <b>«Проверь себя»</b> и <b>«Частая ошибка»</b> — их лучше не
+            пропускать: они короткие, но сильно закрепляют.
+          </div>
+          <div class="related">
+            <span class="related-t">ДАЛЬШЕ</span>
+            <div class="related-links">
+              <a href="#overview">→ Общая картина</a
+              ><a href="#models">→ Модели и компании</a
+              ><a href="#prompt">→ Prompt engineering</a
+              ><a href="#practice">→ Практика</a>
+            </div>
+          </div>
         </section>
 
         <!-- ================= 01 OVERVIEW ================= -->
         <section class="section" id="overview">
           <header>
             <div class="sec-num">01</div>
-            <h2>The Big Picture</h2>
+            <h2>Общая картина</h2>
             <p class="sec-lead">
-              Почти вся путаница в AI — от смешения уровней стека. Прежде чем
-              разбираться в деталях, посмотрите на форму: пользователь общается
-              с приложением; приложение вызывает модель; agent добавляет tools и
-              execution loop; внешние системы делают реальную работу.
+              Почти вся путаница в AI — от смешения уровней. Сначала форма:
+              человек говорит с <b>приложением</b>; приложение вызывает
+              <b>модель</b>; если нужны действия и несколько шагов —
+              появляется <b>агент</b> (цикл + tools); внешние системы делают
+              реальную работу.
             </p>
           </header>
+          <div class="plain">
+            <b>На человеческом языке:</b> модель — это «мозг, который пишет
+            текст». Агент — это «мозг + руки + цикл попыток», пока задача не
+            решена. ChatGPT — приложение. GPT — модель внутри него. Cursor —
+            тоже приложение, которое оркестрирует модели за вас.
+          </div>
           <div class="grid-2">
             <div class="card">
-              <p class="card-t">SIMPLE AI APPLICATION</p>
+              <p class="card-t">ПРОСТОЕ AI-ПРИЛОЖЕНИЕ</p>
               <div class="flow">
                 <div class="fnode">USER</div>
                 <div class="arr"></div>
@@ -2092,12 +2524,18 @@
                 <div class="fnode fnode--muted">ANSWER</div>
               </div>
               <p>
-                Один запрос — один ответ. Без цикла и tools. Совершенно рабочая
-                архитектура — и правильная для многих задач.
+                Один запрос — один ответ. Без цикла и tools. Так работают
+                переводчики, саммаризаторы, многие чат-боты. Этого достаточно
+                чаще, чем кажется.
+              </p>
+              <p class="ex-label">ПРИМЕР</p>
+              <p>
+                «Переведи этот абзац на английский» → модель сразу отдаёт
+                перевод. Никаких файлов, поиска, циклов.
               </p>
             </div>
             <div class="card">
-              <p class="card-t">AGENTIC APPLICATION</p>
+              <p class="card-t">АГЕНТНОЕ ПРИЛОЖЕНИЕ</p>
               <div class="flow">
                 <div class="fnode">USER</div>
                 <div class="arr"></div>
@@ -2116,21 +2554,27 @@
                 <div class="fnode fnode--muted">FINAL ANSWER</div>
               </div>
               <p>
-                Та же модель — обёрнутая в цикл с tools. Несколько шагов,
-                реальные действия.
+                Та же модель — но обёрнутая в цикл с tools. Несколько шагов,
+                реальные действия: открыть файл, сходить в API, поправить код.
+              </p>
+              <p class="ex-label">ПРИМЕР</p>
+              <p>
+                «Найди баг в auth и почини» → агент читает файлы, запускает
+                тесты, правит код, снова проверяет — пока не закончит.
               </p>
             </div>
           </div>
           <div class="takeaway">
-            <span class="tk-tag">KEY&nbsp;TAKEAWAY</span>
+            <span class="tk-tag">ГЛАВНОЕ</span>
             <p>
-              Не каждое AI-приложение — agent. Прямой model call — легитимная
-              архитектура; добавляйте агентов, только когда задаче нужны
-              несколько шагов и действия.
+              Не каждое AI-приложение — agent. Прямой вызов модели —
+              нормальная и часто лучшая архитектура. Агента добавляйте, когда
+              задаче нужны <b>несколько шагов</b> и <b>действия во внешнем
+              мире</b>.
             </p>
           </div>
           <div class="dont" aria-label="Не путать эти понятия">
-            <div class="dont-t">DON'T CONFUSE</div>
+            <div class="dont-t">НЕ ПУТАЙТЕ</div>
             <div class="pair"><b>Model</b><span class="neq">≠</span>Agent</div>
             <div class="pair"><b>Agent</b><span class="neq">≠</span>MCP</div>
             <div class="pair"><b>MCP</b><span class="neq">≠</span>API</div>
@@ -2147,6 +2591,32 @@
               <b>Claude</b><span class="neq">≠</span>Claude Code
             </div>
           </div>
+          <div class="learn quiz" data-quiz="overview-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Нужно перевести 200 строк документации на английский. Что
+              достаточно?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="1">
+                Один вызов модели (простой request → answer)
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Обязательно агент с tools и циклом
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                MCP-сервер без модели
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <div class="mistake">
+            <div class="learn-tag learn-tag--warn">ЧАСТАЯ ОШИБКА</div>
+            <p>
+              Называть ChatGPT «моделью». ChatGPT — приложение. Модель внутри —
+              семейство GPT. То же с Claude Code: продукт ≠ Claude-модель.
+            </p>
+          </div>
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
@@ -2155,18 +2625,20 @@
             </div>
           </div>
         </section>
-
-        <!-- ================= 02 MODELS ================= -->
-        <section class="section" id="models">
           <header>
             <div class="sec-num">02</div>
-            <h2>Models</h2>
+            <h2>Models — модели</h2>
             <p class="sec-lead">
-              Model — это AI, который получает входные данные и генерирует
-              результат. Всё остальное в стеке — providers, API, agents, IDE —
-              это бизнес-логика, протоколы и обвязка вокруг него.
+              Model — это обученная нейросеть: на вход текст (и иногда картинки),
+              на выход — продолжение. Всё остальное в стеке — providers, API,
+              agents, IDE — обвязка вокруг этого «мозга».
             </p>
           </header>
+          <div class="plain">
+            <b>На человеческом языке:</b> модель не «понимает» мир как человек.
+            Она предсказывает следующий кусок текста (token) так, чтобы ответ
+            выглядел правдоподобно. Отсюда сила — и галлюцинации.
+          </div>
           <div class="flow">
             <div class="fnode">INPUT</div>
             <div class="arr"></div>
@@ -2174,44 +2646,179 @@
             <div class="arr"></div>
             <div class="fnode">OUTPUT</div>
           </div>
-          <h3>Five things to keep apart</h3>
+
+          <h3>Модель ≠ агент (запомните это)</h3>
+          <div class="compare-plain">
+            <div class="card">
+              <p class="card-t">MODEL</p>
+              <p>
+                Только генерация. Спросила — ответила. Не открывает файлы, не
+                ходит в интернет сама, не «решает задачу до конца» без вашей
+                обвязки.
+              </p>
+              <p class="ex-label">АНАЛОГИЯ</p>
+              <p>Калькулятор: вы нажали кнопки — он посчитал один раз.</p>
+            </div>
+            <div class="card">
+              <p class="card-t">AGENT</p>
+              <p>
+                Модель + инструкции + tools + цикл. Может читать репозиторий,
+                вызывать API, проверять результат и пробовать снова.
+              </p>
+              <p class="ex-label">АНАЛОГИЯ</p>
+              <p>
+                Стажёр с доступом к ноутбуку: думает, кликает, проверяет, пока
+                задача не закрыта.
+              </p>
+            </div>
+          </div>
+
+          <h3>Пять уровней — не путайте</h3>
           <div class="grid-3">
             <div class="card">
               <p class="card-t">MODEL</p>
               <p>
-                AI, который генерирует выход из входа. GPT, Claude и Gemini —
-                models.
+                Сам AI. GPT‑5.x, Claude Opus/Sonnet, Gemini, DeepSeek, Qwen —
+                это модели (семейства).
               </p>
             </div>
             <div class="card">
               <p class="card-t">PROVIDER</p>
               <p>
-                Компания, которая обучает и обслуживает модели через API —
-                OpenAI, Anthropic, Google.
+                Компания, которая обучает и отдаёт модели через API: OpenAI,
+                Anthropic, Google, DeepSeek, Alibaba…
               </p>
             </div>
             <div class="card">
               <p class="card-t">APPLICATION</p>
               <p>
-                Ваш код. Он вызывает API, предоставляет tools, хранит memory,
-                запускает агентов.
+                Ваш код или продукт (ChatGPT, Cursor, ваш SaaS). Вызывает API,
+                даёт tools, хранит memory.
               </p>
             </div>
             <div class="card">
               <p class="card-t">API</p>
               <p>
-                HTTPS-интерфейс между вашим приложением и моделями провайдера.
+                HTTPS-интерфейс: приложение шлёт сообщения, получает tokens
+                ответа (часто streaming).
               </p>
             </div>
             <div class="card">
               <p class="card-t">AGENT</p>
               <p>
-                Паттерн поверх модели: instructions + tools + execution loop.
+                Паттерн поверх модели: instructions + tools + execution loop —
+                не отдельный «вид модели».
               </p>
             </div>
           </div>
+
+          <h3>Как обучают модели (кратко)</h3>
+          <div class="plain">
+            Обучение — это не «загрузить PDF». Это огромный вычислительный
+            процесс у провайдера. Вы платите уже за <b>inference</b> — запуск
+            готовой модели.
+          </div>
+          <div class="grid-3">
+            <div class="card">
+              <p class="card-t">1 · PRETRAINING</p>
+              <p>
+                Модель читает терабайты текста/кода из интернета и книг и учится
+                предсказывать следующий token. Получается «общий язык», но ещё
+                не удобный ассистент.
+              </p>
+            </div>
+            <div class="card">
+              <p class="card-t">2 · SFT / INSTRUCTION</p>
+              <p>
+                Дообучение на примерах «вопрос → хороший ответ». Модель учится
+                следовать инструкциям, а не просто продолжать текст.
+              </p>
+            </div>
+            <div class="card">
+              <p class="card-t">3 · ALIGNMENT (RLHF / RLAIF)</p>
+              <p>
+                Люди или AI-судьи оценивают ответы; модель подтягивают к
+                полезным, безопасным, честным ответам. Отсюда «тон» ChatGPT и
+                Claude.
+              </p>
+            </div>
+          </div>
+          <p class="note">
+            Дальше возможны специализации: reasoning-модели (дольше «думают»),
+            coding-модели, multimodal (текст+картинки+видео), open-weight
+            (веса можно скачать и self-host).
+          </p>
+
+          <h3>Краткая история до сегодня</h3>
+          <div class="timeline" aria-label="Хронология LLM">
+            <div class="tl-item">
+              <div class="tl-y">2017–2019</div>
+              <div class="tl-h">Transformer → GPT‑2 / BERT</div>
+              <div class="tl-d">
+                Архитектура attention (Google) стала фундаментом. Появились
+                первые крупные языковые модели — ещё не массовый продукт.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-y">2020–2022</div>
+              <div class="tl-h">GPT‑3 → InstructGPT → ChatGPT</div>
+              <div class="tl-d">
+                Масштаб + instruction tuning сделали LLM usable. Ноябрь 2022 —
+                ChatGPT выводит AI в мейнстрим. Модель ≠ чат-продукт: люди
+                путают до сих пор.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-y">2023–2024</div>
+              <div class="tl-h">Claude, Gemini, Llama, tool use, RAG</div>
+              <div class="tl-d">
+                Гонка провайдеров. Open-weight Llama. Function calling / tools.
+                RAG для своих документов. Рождение coding agents (Cursor и др.).
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-y">2025</div>
+              <div class="tl-h">Reasoning + китайский прорыв</div>
+              <div class="tl-d">
+                Reasoning-модели (o-series, R1). DeepSeek R1/V3 показывают
+                frontier-уровень при низкой цене. Qwen (Alibaba), Doubao
+                (ByteDance), Kimi (Moonshot) — сильный китайский ландшафт.
+                MCP становится стандартом подключений.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-y">2026 · сейчас</div>
+              <div class="tl-h">Агенты как норма, open-weight на равных</div>
+              <div class="tl-d">
+                GPT‑5.x, Claude 4.x, Gemini 3.x — закрытый frontier. DeepSeek
+                V4, Qwen 3.x — open/hosted альтернативы. Coding agents
+                (Cursor, Claude Code) — основной способ писать код с AI.
+              </div>
+            </div>
+          </div>
+
+          <h3>Кто делает популярные модели</h3>
+          <p class="note">
+            Снапшот на <span class="dataDate">…</span>. Версии меняются
+            ежемесячно — смотрите официальные docs перед выбором в проде.
+          </p>
+          <div class="twrap">
+            <table aria-label="Провайдеры, страны и модели">
+              <thead>
+                <tr>
+                  <th>Provider</th>
+                  <th>Страна</th>
+                  <th>Примеры моделей</th>
+                  <th>Сильные стороны</th>
+                  <th>Доступ</th>
+                </tr>
+              </thead>
+              <tbody id="provBody"></tbody>
+            </table>
+          </div>
+
           <div class="dont">
-            <div class="dont-t">DON'T CONFUSE</div>
+            <div class="dont-t">НЕ ПУТАЙТЕ</div>
             <div class="pair">
               <b>GPT</b><span class="neq">≠</span>ChatGPT
               <span class="dim">(model ≠ product)</span>
@@ -2222,35 +2829,46 @@
             <div class="pair">
               <b>Gemini</b><span class="neq">≠</span>Google AI Studio
             </div>
+            <div class="pair">
+              <b>DeepSeek</b><span class="neq">≠</span>ChatGPT-клон
+              <span class="dim">(отдельная компания, Китай)</span>
+            </div>
             <div class="pair"><b>Model</b><span class="neq">≠</span>Agent</div>
           </div>
-          <h3>Provider landscape</h3>
-          <p class="note">
-            Качественный снапшот, проверен <span class="dataDate">…</span>.
-            Возможности меняются быстро — считайте это ориентиром и сверяйтесь с
-            официальной документацией.
-          </p>
-          <div class="twrap">
-            <table aria-label="Сравнение провайдеров">
-              <thead>
-                <tr>
-                  <th>Provider</th>
-                  <th>Examples</th>
-                  <th>API</th>
-                  <th>Often used for / strong in</th>
-                  <th>Multimodal</th>
-                  <th>Reasoning</th>
-                  <th>Coding</th>
-                </tr>
-              </thead>
-              <tbody id="provBody"></tbody>
-            </table>
+          <div class="learn quiz" data-quiz="models-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">DeepSeek — это…?</p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                Режим ChatGPT для китайского языка
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                Отдельная компания из Китая и семейство моделей
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Протокол как MCP
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
           </div>
+          <details class="drill">
+            <summary>
+              <span>Задание:</span> разложите «Cursor на Claude» по уровням
+            </summary>
+            <div class="drill-body">
+              <p>
+                <b>Application:</b> Cursor · <b>Agent:</b> coding agent внутри
+                Cursor · <b>Model:</b> Claude (семейство) ·
+                <b>Provider:</b> Anthropic (США) · <b>API:</b> то, через что
+                Cursor вызывает модель.
+              </p>
+            </div>
+          </details>
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
               <a href="#api">→ API</a><a href="#providers">→ Providers</a
-              ><a href="#glossary">→ Glossary</a>
+              ><a href="#agents">→ Agents</a><a href="#glossary">→ Glossary</a>
             </div>
           </div>
         </section>
@@ -2489,6 +3107,26 @@
               то, что приложение сохраняет между ними.
             </div>
           </div>
+          <div class="learn quiz" data-quiz="context-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Пользователь вчера сказал «я люблю TypeScript». Сегодня новый
+              чат. Где это живёт, если система «помнит»?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только в context window модели навсегда
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                В memory приложения (и при необходимости подмешивается в
+                context)
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                В MCP-спецификации
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
@@ -2501,11 +3139,19 @@
         <!-- ================= PROMPT (sub) ================= -->
         <section class="section section--sub" id="prompt">
           <span class="kicker">DEEPER DIVE</span>
-          <h2>Prompt</h2>
+          <h2>Prompt и Prompt Engineering</h2>
           <p class="sec-lead">
-            Prompt — это полный вход модели, собранный из частей ещё до того,
-            как попадёт к ней.
+            Prompt — это <b>весь вход</b>, который модель видит за один запрос:
+            системные инструкции + контекст + ваше сообщение (+ примеры).
+            Prompt engineering — умение собрать этот вход так, чтобы ответ был
+            полезным, стабильным и безопасным.
           </p>
+          <div class="plain">
+            <b>На человеческом языке:</b> модель не «читает мысли». Она отвечает
+            на то, что буквально лежит во входе. Плохой промпт ≈ размытая
+            задача коллеге без контекста. Хороший — роль, цель, ограничения,
+            формат, пример.
+          </div>
           <div class="flow flow-h flow-h--stack">
             <div class="fnode">INSTRUCTIONS</div>
             <div
@@ -2549,15 +3195,15 @@
             <div class="card">
               <p class="card-t">SYSTEM / DEVELOPER</p>
               <p>
-                Постоянные инструкции: роль, формат, ограничения. Применяются к
-                каждому запросу.
+                Постоянные правила: роль, тон, запреты, формат ответа.
+                Применяются к каждому запросу.
               </p>
             </div>
             <div class="card">
-              <p class="card-t">CONTEXTUAL</p>
+              <p class="card-t">CONTEXT</p>
               <p>
-                Документы, найденные фрагменты, результаты инструментов — то,
-                чего модель не знала.
+                Документы, куски кода, результаты tools — то, чего модель не
+                знала из обучения.
               </p>
             </div>
             <div class="card">
@@ -2565,17 +3211,124 @@
               <p>Конкретная просьба человека прямо сейчас.</p>
             </div>
             <div class="card">
-              <p class="card-t">EXAMPLES</p>
+              <p class="card-t">EXAMPLES (few-shot)</p>
               <p>
-                Few-shot образцы, показывающие нужный паттерн. Опционально, но
-                мощно.
+                1–3 образца «вход → желаемый выход». Часто сильнее длинных
+                словесных правил.
               </p>
             </div>
           </div>
-          <p class="note">
-            Эта карта сознательно не углубляется в prompt engineering —
-            отдельное ремесло на том же фундаменте.
-          </p>
+
+          <h3>Плохой vs хороший промпт</h3>
+          <div class="grid-2">
+            <div class="code">
+              <div class="code-head">
+                <span class="code-lang">ПЛОХО · РАЗМЫТО</span
+                ><button class="code-copy" type="button">COPY</button>
+              </div>
+              <pre><code>Напиши что-нибудь про авторизацию.</code></pre>
+            </div>
+            <div class="code">
+              <div class="code-head">
+                <span class="code-lang">ХОРОШО · КОНКРЕТНО</span
+                ><button class="code-copy" type="button">COPY</button>
+              </div>
+              <pre><code><span class="c-c">System:</span>
+Ты senior backend-инженер. Отвечай кратко, на русском.
+Если данных мало — задай 1 уточняющий вопрос.
+
+<span class="c-c">User:</span>
+Напиши функцию resetPassword(email) на TypeScript:
+- найти пользователя
+- сгенерировать одноразовый токен на 30 минут
+- отправить письмо со ссылкой
+Верни только код функции, без пояснений.</code></pre>
+            </div>
+          </div>
+
+          <h3>Мини-паттерны prompt engineering</h3>
+          <div class="grid-2">
+            <div class="card">
+              <p class="card-t">ROLE + GOAL + CONSTRAINTS</p>
+              <p>
+                «Ты X. Цель — Y. Не делай Z. Формат — JSON/таблица/код.» Три
+                опоры почти любого рабочего промпта.
+              </p>
+            </div>
+            <div class="card">
+              <p class="card-t">SHOW, DON'T ONLY TELL</p>
+              <p>
+                Добавьте пример желаемого ответа. Модели лучше копируют
+                паттерн, чем абстрактные правила.
+              </p>
+            </div>
+            <div class="card">
+              <p class="card-t">SEPARATE DATA FROM INSTRUCTIONS</p>
+              <p>
+                Документы и user input — в отдельных блоках/тегах. Так меньше
+                шансов, что модель перепутает «инструкцию» с «данными».
+              </p>
+            </div>
+            <div class="card">
+              <p class="card-t">ITERATE + EVAL</p>
+              <p>
+                Один «идеальный» промпт редко рождается с первого раза.
+                Меняйте по одному рычагу и проверяйте на фиксированных
+                примерах (evals).
+              </p>
+            </div>
+          </div>
+          <div class="code">
+            <div class="code-head">
+              <span class="code-lang">TYPESCRIPT · СБОРКА ПРОМПТА</span
+              ><button class="code-copy" type="button">COPY</button>
+            </div>
+            <pre><code><span class="c-k">function</span> <span class="c-f">buildPrompt</span>(userAsk: <span class="c-v">string</span>, docs: <span class="c-v">string</span>[]) {
+  <span class="c-k">return</span> [
+    { role: <span class="c-s">"system"</span>, content: <span class="c-s">"Ты помощник поддержки. Отвечай только по документам. Если ответа нет — скажи об этом."</span> },
+    { role: <span class="c-s">"user"</span>, content:
+      <span class="c-s">`Документы:\n${docs.join("\n---\n")}\n\nВопрос:\n${userAsk}`</span>
+    },
+  ];
+}</code></pre>
+          </div>
+          <div class="takeaway">
+            <span class="tk-tag">ГЛАВНОЕ</span>
+            <p>
+              Prompt engineering — не магия и не «секретные слова». Это
+              ясная постановка задачи + нужный контекст + проверяемый формат
+              ответа. В агентах ту же роль играют rules, skills и hooks.
+            </p>
+          </div>
+          <div class="learn quiz" data-quiz="prompt-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">Какой промпт лучше для продакшена?</p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                «Сделай красиво и умно про auth»
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                Роль + цель + ограничения + формат (и лучше пример)
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только температура 0 — остальное неважно
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <details class="drill">
+            <summary>
+              <span>Попробуйте сами:</span> перепишите слабый промпт
+            </summary>
+            <div class="drill-body">
+              <p>Было: «Напиши что-нибудь про сброс пароля.»</p>
+              <p>
+                Стало (пример): «Ты backend-инженер. Опиши flow resetPassword
+                для пользователя: шаги UI + письмо + TTL токена 30 мин. Список
+                из 5–7 пунктов, без кода.»
+              </p>
+            </div>
+          </details>
         </section>
 
         <!-- ================= STRUCTURED OUTPUT (sub) ================= -->
@@ -2736,13 +3489,19 @@
         <section class="section" id="agents">
           <header>
             <div class="sec-num">08</div>
-            <h2>Agents</h2>
+            <h2>Agents — агенты</h2>
             <p class="sec-lead">
-              Что превращает agent в agent? Не модель — цикл. Agent — это model
-              с instructions и tools, работающая в execution loop до достижения
-              цели.
+              Агента делает агентом не «умная модель», а <b>цикл</b>: модель
+              думает → предлагает tool → приложение исполняет → результат
+              возвращается → пока цель не достигнута.
             </p>
           </header>
+          <div class="plain">
+            <b>Модель vs агент ещё раз:</b> спросили Claude в чате «что такое
+            JWT?» — это модель. Попросили Cursor «найди утечку памяти и
+            почини» — это агент: он сам открывает файлы, запускает команды,
+            правит код в цикле.
+          </div>
           <div class="flow flow-h flow-h--stack">
             <div class="fnode fnode--accent">MODEL</div>
             <span
@@ -2942,6 +3701,32 @@
           <p class="note">
             Граница не абсолютна — это архитектурная классификация, а не догма.
           </p>
+          <div class="learn quiz" data-quiz="agents-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              «Найди баг в auth, почини и прогони тесты» в Cursor — это…?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                Просто вызов модели без цикла
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                Агент: модель + tools + цикл шагов
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только RAG без tools
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <div class="mistake">
+            <div class="learn-tag learn-tag--warn">ЧАСТАЯ ОШИБКА</div>
+            <p>
+              Путать «умный чат» с агентом. Если нет tools и цикла действий —
+              это всё ещё модель (или тонкая обёртка), даже если ответ длинный
+              и «рассуждающий».
+            </p>
+          </div>
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
@@ -3179,6 +3964,22 @@
               <div class="fsub">actually runs</div>
             </div>
           </div>
+          <div class="learn quiz" data-quiz="mcp-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">MCP — это…?</p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                Новая языковая модель от OpenAI
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                Протокол подключения tools/данных к AI-приложениям
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                То же самое, что RAG
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
@@ -3232,15 +4033,17 @@
                   aria-label="Запрос для демо RAG"
                 />
                 <button class="btn btn--sm seq-btn" type="button">
-                  ▶ RUN RETRIEVAL
+                  ▶ ЗАПУСТИТЬ ПОИСК
                 </button>
               </div>
-              <p class="card-t">KNOWLEDGE BASE</p>
+              <p class="card-t">УЧЕБНАЯ БАЗА ЗНАНИЙ (ВЫМЫШЛЕННЫЙ ПРОДУКТ)</p>
               <div id="ragDocs"></div>
               <div class="seq-steps"></div>
               <p class="demo-note">
-                Визуальная симуляция — без настоящего embeddings-пайплайна.
-                Попробуйте также «оплата» или «отпуск».
+                Это симуляция RAG, а не форма сброса пароля этого сайта (у карты
+                нет аккаунтов). Нажмите Enter или кнопку — документ
+                подсветится, модель «ответит» по найденному тексту. Попробуйте
+                также: «оплата», «api ключ», «отпуск».
               </p>
             </div>
           </div>
@@ -3325,6 +4128,32 @@
               RAG и MCP решают разные задачи и могут использоваться
               <b>одновременно</b>: MCP подключает ваши системы, RAG заземляет
               ответы в их содержимом.
+            </p>
+          </div>
+          <div class="learn quiz" data-quiz="rag-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Бот поддержки должен отвечать по внутренней wiki. Что добавить в
+              первую очередь?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="1">
+                RAG: найти куски wiki и положить в контекст
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только увеличить temperature
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Заменить модель на «более китайскую»
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <div class="mistake">
+            <div class="learn-tag learn-tag--warn">ЧАСТАЯ ОШИБКА</div>
+            <p>
+              Думать, что поле «Как сбросить пароль?» на этой карте — настоящая
+              форма. Это демо RAG: учебная база знаний вымышленного продукта.
             </p>
           </div>
           <div class="related">
@@ -3534,72 +4363,109 @@
             <div class="sec-num">13</div>
             <h2>Rules, Skills, Commands, Subagents, Hooks</h2>
             <p class="sec-lead">
-              Пять механизмов, превращающих coding-агентов из хаотичных в
-              надёжных. Каждый отвечает на свой вопрос — таблица в конце это
-              шпаргалка.
+              Пять механизмов, которые превращают coding-агента из «умного чата»
+              в предсказуемого напарника. Ниже — живые примеры в духе
+              agent-base: rules, skill, command, hooks.json.
             </p>
           </header>
           <h3>Rules</h3>
           <p>
-            Rule — это <b>постоянная инструкция</b>, которая направляет агента в
-            каждой задаче: стандарты кодинга, конвенции, запреты.
+            Rule — <b>постоянная инструкция</b> для агента в этом проекте:
+            стандарты, запреты, «как мы здесь пишем код». Подхватывается
+            автоматически, вы её каждый раз не вставляете в чат.
           </p>
+          <div class="plain">
+            <b>Когда нужен rule:</b> «всегда TypeScript strict», «не трогай
+            биллинг без ревью», «domain — pure, без React». Когда <b>не</b>
+            нужен: одноразовая задача «переименуй кнопку» — это обычный чат.
+          </div>
           <div class="code">
             <div class="code-head">
-              <span class="code-lang">.cursor/rules/project.mdc</span
+              <span class="code-lang">.cursor/rules/architecture.mdc</span
               ><button class="code-copy" type="button">COPY</button>
             </div>
             <pre><code><span class="c-c">---</span>
-<span class="c-v">description</span>: Конвенции проекта
+<span class="c-v">description</span>: Shared clean architecture — inward deps, pure domain
+<span class="c-v">alwaysApply</span>: <span class="c-k">true</span>
 <span class="c-c">---</span>
-- Всегда используй TypeScript в strict-режиме
-- Для стилей — CSS Modules
-- Никогда не используй setTimeout для синхронизации скролла — только IntersectionObserver</code></pre>
+
+<span class="c-c"># Architecture</span>
+Dependencies point <span class="c-s">inward only</span>:
+app / routes → presentation → application → domain ← infrastructure
+
+- <span class="c-s">domain</span> — pure. No React, router, window, storage.
+- No classes as default — functions, plain objects, unions.
+- Immutability — domain ops return new objects.</code></pre>
           </div>
+
           <h3>Skills</h3>
           <p>
-            Skill — это <b>специализированный переиспользуемый workflow</b>,
-            который агент применяет, когда тот уместен: знания + шаги +
-            справочники, упакованные вместе.
+            Skill — <b>переиспользуемый сценарий</b>: когда применять + шаги +
+            чек-листы. Агент сам подхватывает skill, если задача совпала с
+            description — или вы зовёте его явно.
           </p>
           <div class="code">
             <div class="code-head">
-              <span class="code-lang">SKILL STRUCTURE</span
+              <span class="code-lang">skills/adapt-responsive-ui/SKILL.md</span
               ><button class="code-copy" type="button">COPY</button>
             </div>
-            <pre><code>skills/frontend-review/
-├── SKILL.md        # когда и как применять
-├── references/     # чек-листы, гайды по стилю
-└── scripts/        # опциональные вспомогательные скрипты</code></pre>
+            <pre><code><span class="c-c">---</span>
+<span class="c-v">name</span>: adapt-responsive-ui
+<span class="c-v">description</span>: >-
+  Audit UI for phones/tablets. Use when changing layout, CSS, nav, forms,
+  or when the user mentions mobile / viewport / adaptive UI.
+<span class="c-c">---</span>
+
+<span class="c-c"># Adapt responsive UI</span>
+1. Read adaptive-ui docs + project design tokens
+2. Fix with CSS first: fluid widths, min-w-0, safe-area, dvh
+3. Touch targets ≥ 44px
+4. Verify ~320px, phone, tablet, one landscape</code></pre>
           </div>
+          <div class="code">
+            <div class="code-head">
+              <span class="code-lang">СТРУКТУРА SKILL</span
+              ><button class="code-copy" type="button">COPY</button>
+            </div>
+            <pre><code>cursor/skills/adapt-responsive-ui/
+├── SKILL.md          <span class="c-c"># когда и как применять</span>
+└── (опционально)
+    ├── references/   <span class="c-c"># чек-листы</span>
+    └── scripts/      <span class="c-c"># вспомогательные скрипты</span></code></pre>
+          </div>
+
           <h3>Commands</h3>
           <p>
-            Command — это
-            <b>заранее определённый workflow, который вы запускаете явно</b>:
-            именованная кнопка для повторяемого действия.
+            Command — <b>кнопка, которую запускаете вы</b>: именованный
+            workflow в чате (например <span class="mono-inline">/check</span>).
+            В отличие от skill, агент сам его обычно не выбирает.
           </p>
           <div class="code">
             <div class="code-head">
-              <span class="code-lang">COMMANDS</span
+              <span class="code-lang">.cursor/commands/check.md</span
               ><button class="code-copy" type="button">COPY</button>
             </div>
-            <pre><code>/review             → полное код-ревью
-/test               → сгенерировать и запустить тесты
-/create-component   → создать новый компонент</code></pre>
+            <pre><code>Run the project’s quality gate and fix failures.
+
+1. Detect scripts from package.json (check, lint, typecheck, test, build).
+   Prefer <span class="c-s">npm run check</span> when defined.
+2. If missing, compose: typecheck + lint + format check.
+3. Fix errors in the files you own; re-run until green.
+
+Do <span class="c-k">not</span> invent Next-only or Vite-only steps the repo doesn’t use.</code></pre>
           </div>
           <p class="note">
-            Commands и skills пересекаются, но не совпадают: command — явный
-            триггер; skill — возможность, которую агент может задействовать сам,
-            когда она уместна.
+            Command = явный триггер («сделай именно это»). Skill = знание,
+            которое агент может применить сам, когда уместно.
           </p>
+
           <h3>Subagents</h3>
           <p>
-            Subagent — это
+            Subagent —
             <b
-              >отдельный специализированный исполнитель со своим context
-              window</b
-            >, которому главный агент делегирует работу — сохраняя главный
-            контекст чистым.
+              >отдельный исполнитель со своим context window</b
+            >, которому главный агент делегирует кусок работы — чтобы не
+            засорять основной контекст.
           </p>
           <div class="diagram svg-scroll">
             <svg viewBox="0 0 640 260" role="img" aria-labelledby="subT">
@@ -3703,9 +4569,29 @@
           </div>
           <h3>Hooks</h3>
           <p>
-            Hook — это <b>реакция на событие жизненного цикла агента</b>:
-            автоматическая, детерминированная, не решается моделью.
+            Hook — <b>реакция на событие</b> жизненного цикла агента:
+            автоматическая и детерминированная. Модель её не «решает» — сработало
+            событие → выполнился скрипт.
           </p>
+          <div class="plain">
+            <b>Пример из практики:</b> после каждого редактирования файла
+            автоматически прогнать formatter. Агент пишет код — hook наводит
+            порядок, без отдельной просьбы «отформатируй».
+          </div>
+          <div class="code">
+            <div class="code-head">
+              <span class="code-lang">.cursor/hooks.json</span
+              ><button class="code-copy" type="button">COPY</button>
+            </div>
+            <pre><code>{
+  <span class="c-s">"version"</span>: 1,
+  <span class="c-s">"hooks"</span>: {
+    <span class="c-s">"afterFileEdit"</span>: [
+      { <span class="c-s">"command"</span>: <span class="c-s">".cursor/hooks/format.mjs"</span> }
+    ]
+  }
+}</code></pre>
+          </div>
           <div class="flow flow-h flow-h--stack">
             <div class="fitem">
               <div class="fnode fnode--violet">AGENT</div>
@@ -3782,11 +4668,44 @@
               </tbody>
             </table>
           </div>
+          <div class="learn quiz" data-quiz="ext-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Нужно, чтобы после каждого edit файлы форматировались сами. Что
+              взять?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только длинный prompt в чате каждый раз
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                Hook на afterFileEdit (как в hooks.json)
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                MCP вместо formatter
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <details class="drill">
+            <summary>
+              <span>Сопоставьте:</span> rule / skill / command
+            </summary>
+            <div class="drill-body">
+              <p>
+                <b>Rule</b> — «всегда TypeScript strict» (постоянно).<br />
+                <b>Skill</b> — сценарий «адаптируй UI под mobile», когда задача
+                про responsive.<br />
+                <b>Command</b> — вы явно жмёте
+                <span class="mono-inline">/check</span>.
+              </p>
+            </div>
+          </details>
           <div class="related">
             <span class="related-t">RELATED CONCEPTS</span>
             <div class="related-links">
               <a href="#cursor">→ Cursor</a><a href="#agents">→ Agents</a
-              ><a href="#mcp">→ MCP</a>
+              ><a href="#mcp">→ MCP</a><a href="#practice">→ Практика</a>
             </div>
           </div>
         </section>
@@ -3797,9 +4716,11 @@
             <div class="sec-num">14</div>
             <h2>Providers</h2>
             <p class="sec-lead">
-              Иерархия всегда одна: provider обучает модели, отдаёт их через
-              API, а ваше приложение вызывает этот API — напрямую или через
-              aggregator.
+              Иерархия всегда одна: provider (компания в конкретной стране)
+              обучает модели, отдаёт их через API, а ваше приложение вызывает
+              этот API — напрямую или через aggregator. В 2025–2026 к
+              классическим OpenAI / Anthropic / Google добавились сильные
+              китайские лаборатории: DeepSeek, Qwen, Doubao, Kimi.
             </p>
           </header>
           <div class="grid-2">
@@ -4297,16 +5218,184 @@
           </p>
         </section>
 
-        <!-- ================= 17 GLOSSARY ================= -->
+        <!-- ================= PRACTICE ================= -->
+        <section class="section" id="practice">
+          <header>
+            <div class="sec-num">18</div>
+            <h2>Практика — закрепите</h2>
+            <p class="sec-lead">
+              Короткие сценарии и квизы. Цель не «набрать 100%», а поймать
+              типичные путаницы до продакшена.
+            </p>
+          </header>
+          <div class="score-bar" id="scoreBar" aria-live="polite">
+            ОТВЕТОВ: <b id="scoreDone">0</b> · ВЕРНО:
+            <b id="scoreOk">0</b>
+            <button
+              type="button"
+              class="btn btn--sm"
+              id="scoreReset"
+              style="margin-left: auto"
+            >
+              СБРОСИТЬ СЧЁТ
+            </button>
+          </div>
+
+          <h3>Сценарий: что выбрать?</h3>
+          <p class="sec-lead" style="margin-bottom: 8px">
+            Нажмите вариант — сразу увидите разбор. Это не тест на скорость, а
+            тренировка решения.
+          </p>
+          <div class="learn" id="scenarioBox">
+            <div class="learn-tag">КЕЙС</div>
+            <p class="quiz-q" id="scenarioQ">
+              Команда хочет, чтобы бот отвечал по PDF-политикам компании и мог
+              создавать тикеты в Jira.
+            </p>
+            <div class="scenario-grid" id="scenarioOpts"></div>
+            <div class="quiz-fb" id="scenarioFb" hidden></div>
+          </div>
+
+          <h3>Ещё квизы</h3>
+          <div class="learn quiz" data-quiz="practice-1">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">Context window и Memory — это одно и то же?</p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="0">
+                Да, оба хранят всё навсегда
+              </button>
+              <button type="button" class="quiz-opt" data-ok="1">
+                Нет: context — в одном запросе; memory — между сессиями в
+                приложении
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Memory — это только vector DB
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <div class="learn quiz" data-quiz="practice-2">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Нужна дешёвая open-weight модель с сильным reasoning. Куда
+              смотреть в первую очередь?
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="1">
+                DeepSeek / Qwen (и сверять бенчмарки)
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Только закрытый GPT, иначе «не forefront»
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                MCP без модели
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+          <div class="learn quiz" data-quiz="practice-3">
+            <div class="learn-tag">ПРОВЕРЬ СЕБЯ</div>
+            <p class="quiz-q">
+              Skill и Command отличаются тем, что…
+            </p>
+            <div class="quiz-opts">
+              <button type="button" class="quiz-opt" data-ok="1">
+                Command вы запускаете явно; skill агент может взять сам
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Skill всегда дороже по tokens
+              </button>
+              <button type="button" class="quiz-opt" data-ok="0">
+                Это одно и то же, разные названия у OpenAI и Anthropic
+              </button>
+            </div>
+            <div class="quiz-fb" hidden></div>
+          </div>
+
+          <h3>Мини-лаборатория промпта</h3>
+          <div class="learn">
+            <div class="learn-tag">ТРЕНАЖЁР</div>
+            <p class="quiz-q">
+              Допишите промпт. Слева — слабый черновик. Справа соберите
+              нормальный (роль / цель / формат).
+            </p>
+            <div class="grid-2">
+              <div>
+                <p class="ex-label">СЛАБЫЙ</p>
+                <div class="code">
+                  <div class="code-head">
+                    <span class="code-lang">ДО</span>
+                  </div>
+                  <pre><code>Помоги с MCP.</code></pre>
+                </div>
+              </div>
+              <div>
+                <p class="ex-label">ВАШ ВАРИАНТ</p>
+                <textarea
+                  id="promptLab"
+                  rows="6"
+                  aria-label="Тренажёр промпта"
+                  placeholder="Ты… Цель… Ограничения… Формат…"
+                  style="
+                    width: 100%;
+                    background: var(--code-bg);
+                    border: 1px solid var(--border-strong);
+                    border-radius: 10px;
+                    color: var(--text-primary);
+                    font: 13px/1.5 var(--mono);
+                    padding: 12px;
+                    resize: vertical;
+                  "
+                ></textarea>
+                <button
+                  type="button"
+                  class="btn btn--sm"
+                  id="promptLabBtn"
+                  style="margin-top: 10px"
+                >
+                  ПРОВЕРИТЬ ЧЕК-ЛИСТ
+                </button>
+                <div class="quiz-fb" id="promptLabFb" hidden></div>
+              </div>
+            </div>
+          </div>
+
+          <details class="drill">
+            <summary>
+              <span>Шпаргалка:</span> когда что брать
+            </summary>
+            <div class="drill-body">
+              <p>
+                <b>Только модель</b> — перевод, саммари, один ответ.<br />
+                <b>Agent</b> — несколько шагов + действия (файлы, API,
+                тесты).<br />
+                <b>RAG</b> — ответы по вашим документам.<br />
+                <b>MCP</b> — стандартный доступ к внешним системам.<br />
+                <b>Rules / Skills / Hooks</b> — сделать coding-агента
+                предсказуемым.
+              </p>
+            </div>
+          </details>
+
+          <div class="related">
+            <span class="related-t">ДАЛЬШЕ</span>
+            <div class="related-links">
+              <a href="#glossary">→ Glossary</a
+              ><a href="#howto">→ Пути обучения</a
+              ><a href="#architecture">→ Architecture</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 19 GLOSSARY ================= -->
         <section class="section" id="glossary">
           <header>
-            <div class="sec-num">17</div>
-            <h2>Glossary</h2>
+            <div class="sec-num">19</div>
+            <h2>Glossary — словарь своими словами</h2>
             <p class="sec-lead">
-              Все термины карты — с поиском и фильтрами. Термины канонические,
-              на английском: именно так они выглядят в документации, коде и
-              логах. Описания на русском; поиск понимает оба языка. Кликните по
-              RELATED, чтобы перейти к полному объяснению.
+              Термины на английском — как в docs и коде. Описания — на русском,
+              с примерами «что это в жизни». Поиск понимает оба языка. RELATED
+              ведёт к полному разделу карты.
             </p>
           </header>
           <div class="g-controls">
@@ -4454,10 +5543,11 @@
    DATA-СЛОЙ — в Next.js-порте живёт в src/data/*.ts и src/content/*.ts.
    UI никогда не хардкодит эти данные.
 ================================================================ */
-        var DATA_LAST_REVIEWED = "июнь 2025";
-        var MCP_SPEC_SNAPSHOT = "2025-06";
+        var DATA_LAST_REVIEWED = "сентябрь 2026";
+        var MCP_SPEC_SNAPSHOT = "2025-11";
 
         var NAV = [
+          { id: "howto", label: "How to learn", num: "00" },
           { id: "overview", label: "Overview", num: "01" },
           { id: "models", label: "Models", num: "02" },
           { id: "api", label: "API", num: "03" },
@@ -4474,10 +5564,27 @@
           { id: "providers", label: "Providers", num: "14" },
           { id: "evals", label: "Evals", num: "15" },
           { id: "architecture", label: "Architecture", num: "16" },
-          { id: "glossary", label: "Glossary", num: "17" },
+          { id: "practice", label: "Practice", num: "18" },
+          { id: "glossary", label: "Glossary", num: "19" },
         ];
 
         var SECTION_META = [
+          {
+            id: "howto",
+            title: "Как пользоваться",
+            desc: "С чего начать и какие есть учебные пути",
+            kw: [
+              "как пользоваться",
+              "с чего начать",
+              "обучение",
+              "путь",
+              "новичок",
+              "how to",
+              "start",
+              "learn",
+              "guide",
+            ],
+          },
           {
             id: "overview",
             title: "The Big Picture",
@@ -4497,17 +5604,23 @@
           {
             id: "models",
             title: "Models",
-            desc: "Что такое model — и чем она не является",
+            desc: "Что такое model — обучение, компании, история",
             kw: [
               "модель",
               "llm",
               "gpt",
               "claude",
               "gemini",
+              "deepseek",
+              "qwen",
+              "китай",
+              "обучение",
+              "история",
               "провайдер",
               "chatgpt",
               "model",
               "provider",
+              "training",
             ],
           },
           {
@@ -4565,10 +5678,12 @@
           },
           {
             id: "prompt",
-            title: "Prompt",
-            desc: "Instructions + context + запрос = вход модели",
+            title: "Prompt & Prompt Engineering",
+            desc: "Как собрать вход модели: роль, контекст, примеры",
             kw: [
               "промпт",
+              "промпт инженеринг",
+              "prompt engineering",
               "инструкции",
               "системный",
               "few-shot",
@@ -4816,6 +5931,23 @@
             ],
           },
           {
+            id: "practice",
+            title: "Практика",
+            desc: "Квизы, сценарии и тренажёр промпта",
+            kw: [
+              "практика",
+              "квиз",
+              "тест",
+              "проверка",
+              "сценарий",
+              "тренажёр",
+              "закрепить",
+              "practice",
+              "quiz",
+              "exercise",
+            ],
+          },
+          {
             id: "mental-model",
             title: "Mental Model",
             desc: "Если запомните только одно",
@@ -4849,142 +5981,180 @@
         var PROVIDERS = [
           {
             p: "OpenAI",
-            ex: "GPT family",
-            api: "REST + official SDKs",
-            s: "широкая экосистема, универсальность, уверенный tool use",
-            mm: "yes",
-            r: "strong",
-            c: "strong",
+            co: "США",
+            ex: "GPT‑5.x, o-series",
+            s: "универсальность, агенты, экосистема",
+            acc: "API · ChatGPT",
           },
           {
             p: "Anthropic",
-            ex: "Claude family",
-            api: "REST + official SDKs",
-            s: "большой context window, кодинг, аккуратные ответы",
-            mm: "text + images",
-            r: "strong",
-            c: "strong",
+            co: "США",
+            ex: "Claude Opus / Sonnet 4.x",
+            s: "reasoning, кодинг, длинный контекст",
+            acc: "API · Claude.ai · Claude Code",
           },
           {
-            p: "Google",
-            ex: "Gemini family",
-            api: "REST + official SDKs",
-            s: "очень большой контекст, мультимодальность из коробки",
-            mm: "yes",
-            r: "strong",
-            c: "good",
+            p: "Google DeepMind",
+            co: "США / UK",
+            ex: "Gemini 3.x",
+            s: "мультимодальность, огромный контекст",
+            acc: "API · Gemini App · Vertex",
           },
           {
-            p: "xAI",
-            ex: "Grok family",
-            api: "REST + SDKs",
-            s: "быстро развивающиеся модели, сценарии реального времени",
-            mm: "partial",
-            r: "good",
-            c: "good",
+            p: "DeepSeek",
+            co: "Китай",
+            ex: "DeepSeek V4, R1",
+            s: "цена/качество, open-weight, reasoning",
+            acc: "API · open weights",
+          },
+          {
+            p: "Alibaba (Qwen)",
+            co: "Китай",
+            ex: "Qwen 3.x",
+            s: "open + hosted, код, мультиязычность",
+            acc: "API · open weights",
+          },
+          {
+            p: "ByteDance",
+            co: "Китай",
+            ex: "Doubao",
+            s: "массовый consumer AI в Китае",
+            acc: "API / приложения",
+          },
+          {
+            p: "Moonshot",
+            co: "Китай",
+            ex: "Kimi",
+            s: "длинный контекст, ассистенты",
+            acc: "API · приложение",
           },
           {
             p: "Meta",
-            ex: "Llama (open weights)",
-            api: "self-hosted / partner APIs",
-            s: "открытые веса, self-hosting, fine-tuning",
-            mm: "varies",
-            r: "varies",
-            c: "varies",
+            co: "США",
+            ex: "Llama 4",
+            s: "open weights, self-host, fine-tune",
+            acc: "weights · партнёрские API",
           },
           {
             p: "Mistral AI",
-            ex: "Mistral family",
-            api: "REST + open weights",
-            s: "эффективные модели, открытые и коммерческие тиры",
-            mm: "partial",
-            r: "good",
-            c: "good",
+            co: "Франция / EU",
+            ex: "Mistral Large / Medium",
+            s: "европейский open/commercial стек",
+            acc: "API · open weights",
+          },
+          {
+            p: "xAI",
+            co: "США",
+            ex: "Grok",
+            s: "быстрые итерации, real-time сценарии",
+            acc: "API · X / Grok app",
           },
         ];
 
         var MODELS = [
           {
             m: "GPT family",
-            p: "OpenAI",
+            p: "OpenAI · США",
             r: "Strong",
             c: "Strong",
             sp: "Fast",
-            ctx: "Large",
+            ctx: "Very large",
             mm: "Yes",
             cost: "$$",
-            best: "General-purpose + coding",
+            best: "Универсальные задачи, агенты",
           },
           {
             m: "Claude family",
-            p: "Anthropic",
+            p: "Anthropic · США",
             r: "Strong",
             c: "Strong",
             sp: "Fast",
             ctx: "Very large",
             mm: "Text + images",
             cost: "$$",
-            best: "Coding, long-context work",
+            best: "Кодинг, длинный reasoning",
           },
           {
             m: "Gemini family",
-            p: "Google",
+            p: "Google · США/UK",
             r: "Strong",
             c: "Good",
             sp: "Fast",
             ctx: "Very large",
             mm: "Yes",
+            cost: "$–$$",
+            best: "Мультимодальность, огромный контекст",
+          },
+          {
+            m: "DeepSeek family",
+            p: "DeepSeek · Китай",
+            r: "Strong",
+            c: "Strong",
+            sp: "Fast",
+            ctx: "Very large",
+            mm: "Partial",
             cost: "$",
-            best: "Multimodal, long context",
+            best: "Цена/качество, open-weight",
+          },
+          {
+            m: "Qwen family",
+            p: "Alibaba · Китай",
+            r: "Strong",
+            c: "Strong",
+            sp: "Fast",
+            ctx: "Very large",
+            mm: "Yes",
+            cost: "$",
+            best: "Open ecosystem, код, языки",
           },
           {
             m: "Llama family",
-            p: "Meta + partners",
+            p: "Meta · США",
             r: "Varies",
             c: "Good",
             sp: "Varies",
-            ctx: "Varies",
-            mm: "Varies",
+            ctx: "Very large",
+            mm: "Yes",
             cost: "Self-host",
-            best: "Open-weight, self-hosted",
+            best: "Self-host, fine-tune, privacy",
           },
           {
             m: "Mistral family",
-            p: "Mistral AI",
+            p: "Mistral · EU",
             r: "Good",
             c: "Good",
             sp: "Fast",
             ctx: "Large",
             mm: "Partial",
             cost: "$",
-            best: "Efficient / open options",
+            best: "Европейский стек, efficiency",
           },
         ];
 
         var HERO_DEFS = {
-          app: {
-            t: "AI APPLICATION",
-            d: "Ваш код. Оно связывает всё остальное: вызывает model, предоставляет tools, хранит memory, запускает agents.",
-          },
           model: {
             t: "MODEL",
-            d: "AI, который думает и генерирует. GPT, Claude и Gemini — models; ChatGPT и Cursor — приложения, построенные поверх них.",
+            d: "«Мозг»: нейросеть, которая генерирует ответ. GPT, Claude, Gemini, DeepSeek, Qwen — модели. Сама по себе не открывает файлы и не ходит в интернет.",
           },
           tools: {
             t: "TOOLS",
-            d: "То, чем приложение позволяет модели действовать: файлы, web search, базы данных, API. Модель предлагает tool call — приложение исполняет.",
+            d: "«Руки»: файлы, поиск, БД, API. Модель предлагает вызов — ваше приложение исполняет и возвращает результат.",
           },
           memory: {
             t: "MEMORY",
-            d: "То, что приложение помнит между взаимодействиями — отдельно от context window модели.",
+            d: "То, что приложение помнит между сессиями (предпочтения, факты). Не путать с context window одного запроса.",
           },
           data: {
             t: "DATA",
-            d: "Внешние знания: документы, базы данных, vector stores. Доступ через RAG или прямые запросы.",
+            d: "Ваши документы и базы. Через RAG или прямые запросы попадают в контекст модели.",
           },
           agents: {
             t: "AGENTS",
-            d: "Циклы, объединяющие model, инструкции и tools для автономного выполнения многошаговых задач.",
+            d: "Модель + инструкции + tools + цикл: думает, действует, проверяет, пока задача не закрыта. Cursor — типичный coding agent.",
+          },
+          app: {
+            t: "AI APPLICATION",
+            d: "Ваш код или продукт. Связывает модель, tools, memory и data. ChatGPT и Cursor — тоже приложения, не модели.",
           },
         };
 
@@ -4992,7 +6162,7 @@
           {
             t: "Agent",
             c: "Agents",
-            d: "Система, построенная вокруг модели, которая использует tools в цикле исполнения для многошаговых задач. Model + instructions + tools + execution loop.",
+            d: "Не «особая модель», а обёртка: модель + инструкции + tools + цикл попыток. Пример: Cursor чинит баг — читает файлы, правит, проверяет, пока не готово. Один вопрос в ChatGPT без tools — это ещё не агент.",
             r: [
               ["Tool Calling", "#g-tool-calling"],
               ["MCP", "#g-mcp"],
@@ -5116,7 +6286,7 @@
           {
             t: "Model",
             c: "Models",
-            d: "Сам AI: вход → выход. GPT, Claude и Gemini — модели; ChatGPT и Cursor — приложения, построенные поверх моделей.",
+            d: "Обученная нейросеть: вход → выход (обычно текст). GPT, Claude, Gemini, DeepSeek, Qwen — модели. ChatGPT и Cursor — приложения поверх моделей. Модель сама не открывает ваши файлы — это делают tools в приложении/агенте.",
             r: [
               ["Provider", "#g-provider"],
               ["LLM", "#g-llm"],
@@ -5126,16 +6296,27 @@
           {
             t: "Prompt",
             c: "Core",
-            d: "Полный вход, собранный для модели: instructions + context + запрос пользователя. Промпт-инжиниринг — искусство его формировать.",
+            d: "Весь вход за один запрос: system-инструкции + контекст + ваше сообщение (+ примеры). Чем яснее задача и формат, тем стабильнее ответ.",
             r: [
+              ["Prompt Engineering", "#g-prompt-engineering"],
               ["Context", "#g-context"],
               ["Structured Output", "#structured-output"],
             ],
           },
           {
+            t: "Prompt Engineering",
+            c: "Core",
+            d: "Практика собирать промпт так, чтобы модель делала нужное: роль, цель, ограничения, примеры, формат. Не магические слова — ясная постановка задачи. В агентах ту же роль играют rules и skills.",
+            r: [
+              ["Prompt", "#prompt"],
+              ["Rules", "#extensions"],
+              ["Evals", "#evals"],
+            ],
+          },
+          {
             t: "Provider",
             c: "Core",
-            d: "Компания, которая обучает и обслуживает модели через API — OpenAI, Anthropic, Google, xAI, Mistral и другие.",
+            d: "Компания, которая обучает модели и отдаёт их через API. США: OpenAI, Anthropic, Google, Meta, xAI. Китай: DeepSeek, Alibaba (Qwen), ByteDance (Doubao), Moonshot (Kimi). Европа: Mistral.",
             r: [
               ["Models", "#models"],
               ["API", "#api"],
@@ -5144,7 +6325,7 @@
           {
             t: "RAG",
             c: "Data",
-            d: "Retrieval-Augmented Generation: найти релевантные документы (обычно через embeddings), добавить их в context и получить ответ, опирающийся на них.",
+            d: "Retrieval-Augmented Generation: сначала найти нужные документы (часто через embeddings), положить их в промпт, потом сгенерировать ответ. Так модель опирается на ваши знания, а не выдумывает. Демо — в разделе RAG («как сбросить пароль?» — учебный документ, не форма сайта).",
             r: [
               ["Embedding", "#g-embedding"],
               ["Vector Database", "#g-vector-database"],
@@ -5152,9 +6333,63 @@
             ],
           },
           {
+            t: "Rule",
+            c: "AI Coding",
+            d: "Постоянная инструкция для coding-агента (файл в .cursor/rules/). Пример: «domain — pure, без React». Действует на многие задачи автоматически.",
+            r: [
+              ["Skill", "#g-skill"],
+              ["Cursor", "#cursor"],
+            ],
+          },
+          {
+            t: "Skill",
+            c: "AI Coding",
+            d: "Упакованный сценарий (SKILL.md + шаги/чек-листы), который агент применяет, когда задача совпала. Пример: adapt-responsive-ui — аудит вёрстки под телефоны.",
+            r: [
+              ["Command", "#g-command"],
+              ["Rule", "#g-rule"],
+            ],
+          },
+          {
+            t: "Command",
+            c: "AI Coding",
+            d: "Явно запускаемый workflow (например /check): вы нажимаете «кнопку», агент следует заранее написанному сценарию. Не путать со skill — тот агент может выбрать сам.",
+            r: [
+              ["Skill", "#g-skill"],
+              ["Hooks", "#g-hooks"],
+            ],
+          },
+          {
+            t: "Hooks",
+            c: "AI Coding",
+            d: "Автоматические реакции на события агента (afterFileEdit и т.п.). Пример: после правки файла всегда прогнать formatter — без просьбы в чате.",
+            r: [
+              ["Rule", "#g-rule"],
+              ["Cursor", "#cursor"],
+            ],
+          },
+          {
+            t: "DeepSeek",
+            c: "Models",
+            d: "Китайская компания (Hangzhou) и семейство моделей. Известны сильным open-weight/reasoning-направлением и низкой ценой API относительно закрытого frontier США.",
+            r: [
+              ["Provider", "#g-provider"],
+              ["Models", "#models"],
+            ],
+          },
+          {
+            t: "Qwen",
+            c: "Models",
+            d: "Семейство моделей Alibaba (Китай): open weights и API, сильные в коде и мультиязычности. Часто альтернатива Llama/DeepSeek для self-host и кастомизации.",
+            r: [
+              ["Provider", "#g-provider"],
+              ["Models", "#models"],
+            ],
+          },
+          {
             t: "Reasoning",
             c: "Models",
-            d: "Способность модели пройти многошаговую задачу до ответа, вместо мгновенного первого варианта.",
+            d: "Способность модели пройти многошаговую задачу «в уме» до ответа (иногда дольше и дороже). Семейства вроде o-series, R1, «thinking»-режимы у разных провайдеров.",
             r: [
               ["Model", "#g-model"],
               ["Evals", "#evals"],
@@ -5215,18 +6450,21 @@
 
         var RAG_DOCS = [
           {
-            t: "Инструкция: сброс пароля",
+            t: "Инструкция: сброс пароля (демо-продукт)",
             kw: [
-              "пароль",
+              "парол",
+              "сброс",
               "сброс",
               "логин",
               "войти",
-              "восстановить",
+              "восстанов",
+              "доступ",
               "password",
               "reset",
               "login",
+              "forgot",
             ],
-            d: "Откройте Настройки → Безопасность → Сброс пароля. Ссылка в письме действует 30 минут. Если аккаунт заблокирован — напишите в IT.",
+            d: "В демо-приложении Acme: Настройки → Безопасность → «Сбросить пароль». Ссылка в письме действует 30 минут. Если аккаунт заблокирован — напишите в IT. (Это учебный документ для RAG, не функция этой карты.)",
           },
           {
             t: "Оплата и счета",
@@ -5498,12 +6736,10 @@
         }
         $("#provBody").innerHTML = rows(PROVIDERS, [
           "p",
+          "co",
           "ex",
-          "api",
           "s",
-          "mm",
-          "r",
-          "c",
+          "acc",
         ]);
         $("#modelsBody").innerHTML = rows(MODELS, [
           "m",
@@ -5625,7 +6861,7 @@
           bub(
             "tool",
             "TOOL RESULT",
-            '<p class="dim">Отчёт о статусе №42 — спринт 17, готовность 82%, обновлён 30.05.2025.</p>',
+            '<p class="dim">Отчёт о статусе №42 — спринт 17, готовность 82%, обновлён 12.09.2026.</p>',
           ),
           bub(
             "model",
@@ -5715,7 +6951,7 @@
             bestN = 0;
           RAG_DOCS.forEach(function (d, i) {
             var n = d.kw.filter(function (k) {
-              return q.indexOf(k) > -1;
+              return q.indexOf(k.toLowerCase()) > -1;
             }).length;
             if (n > bestN) {
               bestN = n;
@@ -5734,8 +6970,8 @@
           });
           ragMatchEl.textContent =
             idx > -1
-              ? "MATCHED: " + RAG_DOCS[idx].t.toUpperCase() + " · SIM 0.91"
-              : "NO STRONG MATCH";
+              ? "НАЙДЕНО: " + RAG_DOCS[idx].t.toUpperCase() + " · SIM 0.91"
+              : "НЕТ СИЛЬНОГО СОВПАДЕНИЯ";
           ragMatchEl.classList.toggle("none", idx < 0);
           var s = [];
           s.push(bub("user", "USER · QUERY", "<p>" + esc(q) + "</p>"));
@@ -5767,7 +7003,7 @@
               bub(
                 "model",
                 "MODEL · GROUNDED ANSWER",
-                "<p>" + RAG_DOCS[idx].d + "</p>",
+                "<p>" + esc(RAG_DOCS[idx].d) + "</p>",
               ),
             );
           } else {
@@ -5788,7 +7024,13 @@
           }
           return s;
         }
-        makeSeq($("#ragDemo"), buildRagSteps);
+        var ragSeq = makeSeq($("#ragDemo"), buildRagSteps);
+        $("#ragQuery").addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            ragSeq.play();
+          }
+        });
 
         /* ================================================================
    ДЕМО MCP
@@ -6131,6 +7373,231 @@
             }
           }
         });
+
+        /* ================================================================
+   LEARNING: QUIZZES, SCENARIOS, PROMPT LAB
+================================================================ */
+        var QUIZ_FB = {
+          "context-1": {
+            ok: "Память между сессиями хранит приложение; в новый запрос оно может положить факт обратно в context.",
+            bad: "Context window не «помнит вчера» сам. Для этого нужна memory (хранилище приложения).",
+          },
+          "mcp-1": {
+            ok: "MCP — протокол интеграций, не модель и не поиск по документам.",
+            bad: "MCP ≠ модель и ≠ RAG. Это стандарт, как подключать tools и данные.",
+          },
+          "overview-1": {
+            ok: "Верно. Перевод — один запрос → один ответ. Агент здесь лишний.",
+            bad: "Для перевода достаточно простого вызова модели. Агент нужен, когда есть шаги и действия.",
+          },
+          "models-1": {
+            ok: "Да: DeepSeek — китайская компания и семейство моделей, не «режим» чужого продукта.",
+            bad: "DeepSeek — отдельный провайдер из Китая (Hangzhou), со своими моделями и API.",
+          },
+          "prompt-1": {
+            ok: "Именно: роль + цель + ограничения + формат (и примеры) дают стабильный результат.",
+            bad: "Размытые просьбы и одна только temperature не заменяют ясный промпт.",
+          },
+          "agents-1": {
+            ok: "Да — Cursor здесь работает как агент: tools + цикл до результата.",
+            bad: "Если есть чтение файлов, правки и тесты в цикле — это агент, не одиночный ответ модели.",
+          },
+          "rag-1": {
+            ok: "Wiki → retrieval в контекст = классический RAG. Модель сама ваши PDF не знает.",
+            bad: "Temperature и «страна модели» не подставят ваши документы в ответ. Нужен retrieval.",
+          },
+          "ext-1": {
+            ok: "Hook срабатывает на событие automatically — идеально для format после edit.",
+            bad: "Повторять «отформатируй» в чате хрупко. Hook / afterFileEdit — правильный рычаг.",
+          },
+          "practice-1": {
+            ok: "Context window живёт внутри одного запроса; memory — то, что приложение хранит дольше.",
+            bad: "Это разные слои. Memory ≠ context window.",
+          },
+          "practice-2": {
+            ok: "DeepSeek и Qwen — сильные кандидаты на open/дешёвый reasoning; всегда сверяйте актуальные evals.",
+            bad: "Закрытый frontier не единственный путь. Open-weight Китай/Meta часто выигрывают по цене.",
+          },
+          "practice-3": {
+            ok: "Command — явная кнопка; skill — возможность, которую агент может выбрать сам.",
+            bad: "Это разные механизмы запуска, не «дороговизна» и не маркетинг провайдеров.",
+          },
+        };
+
+        var score = { done: 0, ok: 0, answered: {} };
+        function renderScore() {
+          var d = $("#scoreDone"),
+            o = $("#scoreOk");
+          if (d) d.textContent = String(score.done);
+          if (o) o.textContent = String(score.ok);
+        }
+        function markQuiz(root, btn, correct) {
+          var id = root.getAttribute("data-quiz") || "";
+          if (score.answered[id]) return;
+          score.answered[id] = true;
+          score.done += 1;
+          if (correct) score.ok += 1;
+          renderScore();
+          var opts = $$(".quiz-opt", root);
+          opts.forEach(function (b) {
+            b.disabled = true;
+            var isOk = b.getAttribute("data-ok") === "1";
+            if (isOk) b.classList.add("is-correct");
+            else if (b === btn && !correct) b.classList.add("is-wrong");
+            else b.classList.add("is-muted");
+          });
+          var fb = $(".quiz-fb", root);
+          var pack = QUIZ_FB[id] || {
+            ok: "Верно.",
+            bad: "Не совсем. Посмотрите правильный вариант.",
+          };
+          fb.hidden = false;
+          fb.className = "quiz-fb " + (correct ? "is-ok" : "is-bad");
+          fb.innerHTML =
+            "<b>" +
+            (correct ? "Верно." : "Почти.") +
+            "</b> " +
+            (correct ? pack.ok : pack.bad);
+        }
+        document.addEventListener("click", function (e) {
+          var opt = e.target.closest(".quiz-opt");
+          if (!opt) return;
+          var root = opt.closest(".quiz");
+          if (!root) return;
+          markQuiz(root, opt, opt.getAttribute("data-ok") === "1");
+        });
+        var resetBtn = $("#scoreReset");
+        if (resetBtn) {
+          resetBtn.addEventListener("click", function () {
+            score = { done: 0, ok: 0, answered: {} };
+            renderScore();
+            $$(".quiz").forEach(function (root) {
+              $$(".quiz-opt", root).forEach(function (b) {
+                b.disabled = false;
+                b.classList.remove("is-correct", "is-wrong", "is-muted");
+              });
+              var fb = $(".quiz-fb", root);
+              if (fb) {
+                fb.hidden = true;
+                fb.className = "quiz-fb";
+                fb.textContent = "";
+              }
+            });
+            $$("#scenarioOpts .scenario").forEach(function (b) {
+              b.classList.remove("is-picked");
+              b.disabled = false;
+            });
+            var sf = $("#scenarioFb");
+            if (sf) {
+              sf.hidden = true;
+              sf.className = "quiz-fb";
+              sf.textContent = "";
+            }
+          });
+        }
+        renderScore();
+
+        var SCENARIOS = [
+          {
+            t: "Только большая модель",
+            d: "Надеяться, что она «уже знает» политики",
+            ok: false,
+            fb: "Модель не видит ваши PDF из коробки. Нужен retrieval (RAG) + способ создавать тикеты (tool/MCP).",
+          },
+          {
+            t: "RAG + MCP (Jira)",
+            d: "Документы в контекст, тикеты через MCP/tool",
+            ok: true,
+            fb: "Верно: RAG заземляет ответы в политиках, MCP/tool даёт действие «создать тикет».",
+          },
+          {
+            t: "Только Hook",
+            d: "Форматтер после edit решит и wiki, и Jira",
+            ok: false,
+            fb: "Hook отлично для format/audit, но не подставляет знания и не ходит в Jira сам по себе.",
+          },
+        ];
+        var scenOpts = $("#scenarioOpts");
+        if (scenOpts) {
+          scenOpts.innerHTML = SCENARIOS.map(function (s, i) {
+            return (
+              '<button type="button" class="scenario" data-i="' +
+              i +
+              '"><div class="scenario-t">' +
+              esc(s.t) +
+              '</div><div class="scenario-d">' +
+              esc(s.d) +
+              "</div></button>"
+            );
+          }).join("");
+          scenOpts.addEventListener("click", function (e) {
+            var b = e.target.closest(".scenario");
+            if (!b || b.disabled) return;
+            var s = SCENARIOS[+b.dataset.i];
+            $$(".scenario", scenOpts).forEach(function (x) {
+              x.classList.toggle("is-picked", x === b);
+              x.disabled = true;
+            });
+            var fb = $("#scenarioFb");
+            fb.hidden = false;
+            fb.className = "quiz-fb " + (s.ok ? "is-ok" : "is-bad");
+            fb.innerHTML =
+              "<b>" + (s.ok ? "Хороший выбор." : "Слабый выбор.") + "</b> " + s.fb;
+            if (!score.answered["scenario-1"]) {
+              score.answered["scenario-1"] = true;
+              score.done += 1;
+              if (s.ok) score.ok += 1;
+              renderScore();
+            }
+          });
+        }
+
+        var labBtn = $("#promptLabBtn");
+        if (labBtn) {
+          labBtn.addEventListener("click", function () {
+            var t = ($("#promptLab").value || "").toLowerCase();
+            var checks = [
+              { k: "роль", ok: /ты\b|senior|engineer|помощник|ассистент/.test(t) },
+              {
+                k: "цель",
+                ok: /цель|объясн|сравни|опиши|сделай|напиши/.test(t),
+              },
+              {
+                k: "формат",
+                ok: /формат|список|json|пункт|таблиц|кратко/.test(t),
+              },
+              {
+                k: "длина",
+                ok: t.trim().length >= 40,
+              },
+            ];
+            var pass = checks.filter(function (c) {
+              return c.ok;
+            }).length;
+            var fb = $("#promptLabFb");
+            fb.hidden = false;
+            fb.className =
+              "quiz-fb " + (pass >= 3 ? "is-ok" : pass >= 2 ? "is-bad" : "is-bad");
+            fb.innerHTML =
+              "<b>Чек-лист: " +
+              pass +
+              "/4</b> — " +
+              checks
+                .map(function (c) {
+                  return (c.ok ? "✓ " : "✗ ") + c.k;
+                })
+                .join(" · ") +
+              (pass >= 3
+                ? ". Достаточно для учебного промпта."
+                : ". Добавьте роль, цель и явный формат ответа.");
+            if (!score.answered["prompt-lab"] && pass >= 3) {
+              score.answered["prompt-lab"] = true;
+              score.done += 1;
+              score.ok += 1;
+              renderScore();
+            }
+          });
+        }
 
         /* ================================================================
    ПОДСКАЗКА КЛАВИШИ
